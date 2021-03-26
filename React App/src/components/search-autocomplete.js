@@ -6,7 +6,7 @@ class Autocomplete extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSuggestion: 0,
+      activeSuggestion: -1,
       filteredSuggestions: [],
       showSuggestions: false,
       userInput: "",
@@ -21,7 +21,7 @@ class Autocomplete extends Component {
       .then((response) => {
         this.setState({
           filteredSuggestions: response.data,
-          activeSuggestion: 0,
+          activeSuggestion: -1,
           showSuggestions: true,
           userInput: userInput,
         });
@@ -40,7 +40,7 @@ class Autocomplete extends Component {
 
   onClick = (movie) => {
     this.setState({
-      activeSuggestion: 0,
+      activeSuggestion: -1,
       filteredSuggestions: [],
       showSuggestions: false,
       userInput: "",
@@ -128,6 +128,7 @@ class Autocomplete extends Component {
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
+          placeholder="Search"
         />
         {suggestionsListComponent}
       </Fragment>
